@@ -18,12 +18,12 @@
         <link href="./css/cover.css" rel="stylesheet">
     </head>
 
-    <body class="text-center" onload="OrdersControllerModule.showOrdersByTable()">
+    <body class="text-center" onload="OrdersControllerModule.updateOrder()">
 
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="masthead mb-auto">
                 <div class="inner">
-                    <h3 class="masthead-brand">Orders</h3>
+                    <h3 class="masthead-brand">Update Orders</h3>
                     <nav class="nav nav-masthead justify-content-center">
                         <a class="nav-link active" href="index.html" >Orders</a>
                         <a class="nav-link" href="updateOrders.html" >Update Orders</a>
@@ -33,6 +33,10 @@
             </header>
 
             <main role="main" class="main">
+                <select></select>
+                <input placeholder="Item Name">
+                <input placeholder="Quantity">
+                <button>Add</button>
             </main>
 
             <footer class="mastfoot mt-auto">

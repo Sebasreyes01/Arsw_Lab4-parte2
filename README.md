@@ -28,7 +28,7 @@ Modify the *index.html* page so it displays the following orders structure:
 - Call the *showOrdersByTable* function on the [onload](https://www.w3schools.com/tags/ev_onload.asp) event so the orders load once tha page is loaded.
 
 
-# Part 2: Orders CRUD: FrontEnd
+# Part 3: Orders CRUD: FrontEnd
 
 Create a new html page that has the following structure:
 
@@ -56,7 +56,7 @@ Connect your html components with your controllers:
    - Call the function *updateOrder* when the Update button is clicked (make sure you validate the submitted data)
    - Call the function *deleteOrderItem* when the Delete button is clicked
    
-# Part 3: Orders CRUD: BackEnd   
+# Part 4: Orders CRUD: BackEnd   
 
 Implement the missing methods on your REST API in order to be able to serve your JavaScript client:
 
