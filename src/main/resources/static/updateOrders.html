@@ -33,10 +33,12 @@
             </header>
 
             <main role="main" class="main">
-                <select></select>
-                <input placeholder="Item Name">
-                <input placeholder="Quantity">
-                <button>Add</button>
+                <select id="select" onchange="OrdersControllerModule.updateOrder()"></select>
+                <input id="addItem" placeholder="Item Name">
+                <input id="addQuantity" placeholder="Quantity">
+                <button onclick="OrdersControllerModule.addItemToOrder()">Add</button>
+                <br>
+                <div id="container" class="grid-container"></div>
             </main>
 
             <footer class="mastfoot mt-auto">

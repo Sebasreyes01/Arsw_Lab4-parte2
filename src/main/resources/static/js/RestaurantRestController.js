@@ -15,7 +15,17 @@ var RestControllerModule = (function () {
     };
 
     var updateOrder = function (order, callback) {
-        // todo implement
+        instance.put('/orders', order, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                callback.onSuccess(response);
+            })
+            .catch(function (error) {
+                callback.onFailed(error);
+            });
     };
 
     var deleteOrder = function (orderId, callback) {

@@ -108,3 +108,14 @@ body {
     align-items: center;
     margin: auto;
 }
+.grid-container {
+    display: grid;
+    grid-column-gap: 50px;
+    grid-row-gap: 20px;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+.grid-item {
+    /*padding: 20px;*/
+    text-align: center;
+}
