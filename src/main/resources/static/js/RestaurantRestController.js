@@ -14,7 +14,21 @@ var RestControllerModule = (function () {
             })
     };
 
-    var updateOrder = function (order, callback) {
+    var updateOrder = function (update, table, callback) {
+        instance.put('/orders/'+table, update, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                callback.onSuccess(response);
+            })
+            .catch(function (error) {
+                callback.onFailed(error);
+            });
+    };
+
+    var addOrderItem = function (order, callback) {
         instance.put('/orders', order, {
             headers: {
                 'Content-Type': 'application/json'
@@ -28,19 +42,32 @@ var RestControllerModule = (function () {
             });
     };
 
-    var deleteOrder = function (orderId, callback) {
-        // todo implement
+    var deleteOrderItem = function (item,table, callback) {
+        instance.delete('/orders/'+table+'/'+item)
+            .then(function (response) {
+                callback.onSuccess();
+            })
+            .catch(function (error) {
+                callback.onFailed();
+            });
     };
 
-    var createOrder = function (order, callback) {
-        // todo implement
+    var deleteOrder = function (orderId, callback) {
+        instance.delete('/orders/'+orderId)
+            .then(function (response) {
+                callback.onSuccess(response);
+            })
+            .catch(function (error) {
+                callback.onFailed(error);
+            });
     };
 
     return {
         getOrders: getOrders,
         updateOrder: updateOrder,
+        addOrderItem:addOrderItem,
         deleteOrder: deleteOrder,
-        createOrder: createOrder
+        deleteOrderItem:deleteOrderItem
     };
 
 })();

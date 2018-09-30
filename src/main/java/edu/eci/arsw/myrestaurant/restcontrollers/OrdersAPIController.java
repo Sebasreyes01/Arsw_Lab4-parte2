@@ -103,6 +103,20 @@ public class OrdersAPIController {
 
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/{tableId}")
+    public  ResponseEntity<?> handlerPutResourceUpdateProduct(@RequestBody List<String> update, @PathVariable int tableId) {
+        try {
+            String item = update.get(0).toUpperCase();
+            int amount = Integer.parseInt(update.get(1));
+            ros.getTableOrder(tableId).updateDish(item,amount);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdersAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Can't add that products to the order",HttpStatus.FORBIDDEN);
+        }
+
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, path = "/{tableID}")
     public ResponseEntity<?> handlerDeleteResourceOrder(@PathVariable int tableID) {
         try {
@@ -112,7 +126,17 @@ public class OrdersAPIController {
             Logger.getLogger(OrdersAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Can't delete the order",HttpStatus.FORBIDDEN);
         }
+    }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{tableID}/{item}")
+    public ResponseEntity<?> handlerDeleteOrderProduct(@PathVariable int tableID,@PathVariable String item) {
+        try {
+            ros.getTableOrder(tableID).removeDish(item.toUpperCase());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdersAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Can't delete the order",HttpStatus.FORBIDDEN);
+        }
     }
 
 }

@@ -44,6 +44,14 @@ public class Order {
         }
     }
 
+    public void removeDish(String p) {
+        orderAmountsMap.remove(p);
+    }
+
+    public void updateDish(String item, int amount) {
+        orderAmountsMap.replace(item,amount);
+    }
+
     @JsonIgnore
     public Set<String> getOrderedDishes() {
         return orderAmountsMap.keySet();
